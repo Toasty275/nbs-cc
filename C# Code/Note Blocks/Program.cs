@@ -9,35 +9,10 @@ namespace Note_Blocks
         static void Main(string[] args)
         {
             Console.WriteLine("Toast's Note Block Studio (.nbs) decoder");
-            BinaryReader reader = new BinaryReader(File.Open("Input.nbs", FileMode.Open));
-            List<string> header = new List<string>();
-            decimal bpm;
-            //Part 1
-            header.Add("zero: " + reader.ReadInt16().ToString()); //zero
-            header.Add("nbs version: " + reader.ReadByte().ToString()); //nbs version
-            header.Add("instrument count: " + reader.ReadByte().ToString()); //vanilla instrument count
-            header.Add("song length: " + reader.ReadInt16().ToString()); //song length
-            header.Add("layer count: " + reader.ReadInt16().ToString()); //layer count
-            string title = new string(reader.ReadChars(reader.ReadInt32()));
-            header.Add("title: " + title); //song name
-            header.Add("author: " + new string(reader.ReadChars(reader.ReadInt32()))); //author name
-            header.Add("song author: " + new string(reader.ReadChars(reader.ReadInt32()))); //original author
-            header.Add("description: " + new string(reader.ReadChars(reader.ReadInt32()))); //song description
-            bpm = reader.ReadInt16();
-            header.Add("tempo: " + bpm.ToString()); //tempo
-            header.Add("auto save: " + reader.ReadByte().ToString()); //auto save
-            header.Add("auto save duration: " + reader.ReadByte().ToString()); //auto save duration
-            header.Add("time signature: " + reader.ReadByte().ToString()); //time signature
-            header.Add("minutes spent: " + reader.ReadInt32().ToString()); //minutes spent
-            header.Add("left clicks: " + reader.ReadInt32().ToString()); //left clicks
-            header.Add("right clicks: " + reader.ReadInt32().ToString()); //right clicks
-            header.Add("note blocks added: " + reader.ReadInt32().ToString()); //note blocks added
-            header.Add("note blocks removed: " + reader.ReadInt32().ToString()); //note blocks removed
-            header.Add("midi name: " + new string(reader.ReadChars(reader.ReadInt32()))); //midi name
-            header.Add("loop: " + reader.ReadByte().ToString()); //loop
-            header.Add("max loop count: " + reader.ReadByte().ToString()); //max loop count
-            header.Add("loop start tick: " + reader.ReadInt16().ToString()); //loop start tick
-
+            Song song = new Song(args[0]);
+            decimal bpm = song.Bpm;
+            string title = song.Title;
+            List<string> header = song.Header;
             foreach (string x in header) Console.WriteLine(x);
             Console.WriteLine();
             //part 2
@@ -75,7 +50,8 @@ namespace Note_Blocks
             List<int> clickNotes = new List<int>();
             while (true)
             {
-                short jumps = reader.ReadInt16();
+                Beat beat = song.NextBeat();
+                short jumps = beat.Jumps;
                 if (jumps == 0) break;
                 index++;
                 for (int x = index + jumps; index != x - 1; index++)
@@ -84,12 +60,10 @@ namespace Note_Blocks
                 }
                 string line = null;
 
-                while (true) //main thingey
+                for (int i = 0; i != beat.Instruments.Count; i++) //main thingey
                 {
-                    short nextLayer = reader.ReadInt16();
-                    if (nextLayer == 0) break;
-                    int instrument = reader.ReadByte();
-                    int pitch = reader.ReadByte() - 33;
+                    int instrument = beat.Instruments[i];
+                    int pitch = beat.Pitches[i];
 
                     int temp = instNums[instrument]; //low mid hi
                     if (pitch < 0)
@@ -150,13 +124,10 @@ namespace Note_Blocks
                     }
 
                     line += "{" + instrument + ", " + pitch + "}, ";
-                    reader.ReadByte();
-                    reader.ReadByte();
-                    reader.ReadInt16();
                 }
                 lines += "\n\ttemp[" + index + "] = {" + line + "}";
             }
-            File.WriteAllText("output.txt", "function makeSong()\n\ttemp = {}\n" + lines + "\n\n\treturn temp\nend");
+            File.WriteAllText(args[1], "function makeSong()\n\ttemp = {}\n" + lines + "\n\n\treturn temp\nend");
             lines = "Instrument scales:\n";
             for (int x = 0; x != instNames.Length; x++)
             {
@@ -196,7 +167,7 @@ namespace Note_Blocks
                 for (int x = 0; x != clickNotes.Count; x++) lines += $"{x}={clickNotes[x]} ";
             }
             Console.WriteLine(lines);
-            reader.Dispose();
+            song.Dispose();
             //Console.ReadKey();
         }
     }

@@ -12,14 +12,12 @@ C:\Users\ion\source\repos\Note Blocks\Note Blocks\obj\Debug\netcoreapp3.1\Note B
 C:\Users\ion\source\repos\Note Blocks\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.pdb
 C:\Users\ion\source\repos\Note Blocks\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.genruntimeconfig.cache
 C:\Users\ion\source\repos\Note Blocks\Note Blocks\bin\Debug\netcoreapp3.1\Input.nbs
-C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\netcoreapp3.1\Input.nbs
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\netcoreapp3.1\Note Blocks.exe
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\netcoreapp3.1\Note Blocks.deps.json
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\netcoreapp3.1\Note Blocks.runtimeconfig.json
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\netcoreapp3.1\Note Blocks.runtimeconfig.dev.json
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\netcoreapp3.1\Note Blocks.dll
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\netcoreapp3.1\Note Blocks.pdb
-C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.csprojAssemblyReference.cache
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.AssemblyInfoInputs.cache
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.AssemblyInfo.cs
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.csproj.CoreCompileInputs.cache

@@ -1,11 +1,8 @@
 {
   "profiles": {
     "Note Blocks": {
-      "commandName": "Project"
-    },
-    "Analyze": {
       "commandName": "Project",
-      "commandLineArgs": "-a"
+      "commandLineArgs": "input.nbs output.txt"
     }
   }
 }
