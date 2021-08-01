@@ -9,12 +9,17 @@ namespace Note_Blocks
     {
         private BinaryReader reader;
         private string title;
+        private string description;
         private decimal bpm;
         private List<string> header;
 
         public string Title
         {
             get { return title; }
+        }
+        public string Description
+        {
+            get { return description; }
         }
         public decimal Bpm
         {
@@ -37,7 +42,8 @@ namespace Note_Blocks
             header.Add("title: " + title); //song name
             header.Add("author: " + new string(reader.ReadChars(reader.ReadInt32()))); //author name
             header.Add("song author: " + new string(reader.ReadChars(reader.ReadInt32()))); //original author
-            header.Add("description: " + new string(reader.ReadChars(reader.ReadInt32()))); //song description
+            description = new string(reader.ReadChars(reader.ReadInt32()));
+            header.Add("description: " + description); //song description
             bpm = reader.ReadInt16();
             header.Add("tempo: " + bpm.ToString()); //tempo
             header.Add("auto save: " + reader.ReadByte().ToString()); //auto save

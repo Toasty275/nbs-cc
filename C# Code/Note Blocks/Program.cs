@@ -48,6 +48,17 @@ namespace Note_Blocks
             List<int> drumNotes = new List<int>();
             List<int> snareNotes = new List<int>();
             List<int> clickNotes = new List<int>();
+            bool usingTempoChange = false;
+            int tempoChanger = 0;
+            List<int> tempos = new List<int>();
+            if (int.TryParse(song.Description.Split("\n")[0], out tempoChanger))
+            {
+                usingTempoChange = true;
+                for (int x = 1; x != song.Description.Split("\n").Length; x++)
+                {
+                    tempos.Add(int.Parse(song.Description.Split("\n")[x]));
+                }
+            }
             while (true)
             {
                 Beat beat = song.NextBeat();
@@ -64,65 +75,71 @@ namespace Note_Blocks
                 {
                     int instrument = beat.Instruments[i];
                     int pitch = beat.Pitches[i];
-
-                    int temp = instNums[instrument]; //low mid hi
-                    if (pitch < 0)
+                    if (usingTempoChange && instrument == tempoChanger)
                     {
-                        if (temp - 4 >= 0) temp -= 4;
-                        if (temp - 2 >= 0) temp -= 2;
-                        if (temp - 1 < 0) instNums[instrument] += 1;
-                    }
-                    else if (pitch > 24)
-                    {
-                        if (temp - 4 < 0) instNums[instrument] += 4;
+                        instrument = -1;
+                        pitch = tempos[pitch];
                     }
                     else
                     {
-                        if (temp - 4 >= 0) temp -= 4;
-                        if (temp - 2 < 0) instNums[instrument] += 2;
-                    }
+                        int temp = instNums[instrument]; //low mid hi
+                        if (pitch < 0)
+                        {
+                            if (temp - 4 >= 0) temp -= 4;
+                            if (temp - 2 >= 0) temp -= 2;
+                            if (temp - 1 < 0) instNums[instrument] += 1;
+                        }
+                        else if (pitch > 24)
+                        {
+                            if (temp - 4 < 0) instNums[instrument] += 4;
+                        }
+                        else
+                        {
+                            if (temp - 4 >= 0) temp -= 4;
+                            if (temp - 2 < 0) instNums[instrument] += 2;
+                        }
 
-                    if (instrument == 2) //percussion note counts
-                    {
-                        if (!drumNotes.Contains(pitch))
+                        if (instrument == 2) //percussion note counts
                         {
-                            drumNotes.Add(pitch);
+                            if (!drumNotes.Contains(pitch))
+                            {
+                                drumNotes.Add(pitch);
+                            }
+                            pitch = drumNotes.IndexOf(pitch);
                         }
-                        pitch = drumNotes.IndexOf(pitch);
-                    }
-                    else if (instrument == 3)
-                    {
-                        if (!snareNotes.Contains(pitch))
+                        else if (instrument == 3)
                         {
-                            snareNotes.Add(pitch);
+                            if (!snareNotes.Contains(pitch))
+                            {
+                                snareNotes.Add(pitch);
+                            }
+                            pitch = snareNotes.IndexOf(pitch);
                         }
-                        pitch = snareNotes.IndexOf(pitch);
-                    }
-                    else if (instrument == 4)
-                    {
-                        if (!clickNotes.Contains(pitch))
+                        else if (instrument == 4)
                         {
-                            clickNotes.Add(pitch);
+                            if (!clickNotes.Contains(pitch))
+                            {
+                                clickNotes.Add(pitch);
+                            }
+                            pitch = clickNotes.IndexOf(pitch);
                         }
-                        pitch = clickNotes.IndexOf(pitch);
-                    }
 
-                    if (instGoTo[instrument] != 0)
-                    {
-                        instrument = instGoTo[instrument];
-                    }
-                    else
-                    {
-                        int max = 0;
-                        foreach (int x in instGoTo)
+                        if (instGoTo[instrument] != 0)
                         {
-                            if (max < x) max = x;
+                            instrument = instGoTo[instrument];
                         }
-                        max++;
-                        instGoTo[instrument] = max;
-                        instrument = max;
+                        else
+                        {
+                            int max = 0;
+                            foreach (int x in instGoTo)
+                            {
+                                if (max < x) max = x;
+                            }
+                            max++;
+                            instGoTo[instrument] = max;
+                            instrument = max;
+                        }
                     }
-
                     line += "{" + instrument + ", " + pitch + "}, ";
                 }
                 lines += "\n\ttemp[" + index + "] = {" + line + "}";

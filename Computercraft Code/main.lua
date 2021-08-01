@@ -1,12 +1,12 @@
-sleep(10)
+--sleep(10)
 dofile('./song.lua')
 local tick = 0
 local reset = 0
-local origins = {{-49, 516}, {-50, 516}, {}, {-60, 514}, {-50, 534}, {-60, 524}, {-60, 534}, {-50, 514}}
-local types = {0, 0, 0, 3, 3, 3, 3, 3}
+local origins = {{}, {}, {}, {-116, 453}, {-106, 453}, {-106, 463}, {-106, 473}, {-116, 473}, {-115, 462}}
+local types = {0, 0, 0, 3, 3, 3, 3, 3, 2}
 local beat = 1
 local songArray = makeSong()
-local mon = peripheral.wrap("monitor_10")
+local mon = peripheral.wrap("monitor_11")
 local loop = 1
 local loopcounter = 1
 local notecount = 0
@@ -16,11 +16,14 @@ mon.setCursorPos(1, 1)
 mon.write("Now playing: ")
 mon.setCursorPos(1, 2)
 mon.write(songArray["title"])
-mon.setCursorPos(1, 3)
-mon.write("Game is running "..(songArray["tps"] * 0.2).."x as fast")
 mon.setCursorPos(1, 4)
---mon.write("Note count: 0")
+mon.write("Note count: 0")
 
+function tps(t)
+	mon.setCursorPos(1, 3)
+	mon.write("Game is running "..(t * 0.2).."x as fast")
+	commands.execAsync("tickrate "..(t * 4).." server")
+end
 function offset(pitch, t)
 	z = 5
 	p = pitch
@@ -45,15 +48,20 @@ function offsetgui(pitch)
 end
 
 function play(note, pitch)
-	if types[note] == 0 then
-		commands.execAsync("setblock "..(origins[note][1]).." 4 "..(origins[note][2] + pitch).." redstone_torch")
+	if note == -1 then
+		tps(pitch / 100)
 	else
-		block = offset(pitch, types[note])
-		commands.execAsync("setblock "..(origins[note][1] + block[1]).." 4 "..(origins[note][2] + block[2]).." redstone_torch")
+		notecount = notecount + 1
+		if types[note] == 0 then
+			commands.execAsync("setblock "..(origins[note][1]).." 4 "..(origins[note][2] + pitch).." redstone_torch")
+		else
+			block = offset(pitch, types[note])
+			commands.execAsync("setblock "..(origins[note][1] + block[1]).." 4 "..(origins[note][2] + block[2]).." redstone_torch")
+		end
 	end
 end
 --sleep(10)
-commands.execAsync("tickrate "..(songArray["tps"] * 4).." server")
+tps(songArray["tps"])
 while true do
 	sleep(0)
 	if reset == 0 then
@@ -63,7 +71,6 @@ while true do
 				mon.clearLine()
 				for i, v in pairs(songArray[beat]) do
 					play(v[1], v[2])
-					notecount = notecount + 1
 					--mon.write("{"..v[1]..","..v[2].."} ")
 				end
 			end)
@@ -85,7 +92,7 @@ while true do
 				mon.write("Note count: "..notecount)
 			end
 		else
-			commands.execAsync("fill -60 4 534 -42 4 506 glass")
+			commands.execAsync("fill -116 4 473 -98 4 445 glass")
 			tick = 0
 			reset = 1
 			beat = beat + 1

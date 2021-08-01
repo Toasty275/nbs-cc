@@ -2,7 +2,7 @@
   "profiles": {
     "Note Blocks": {
       "commandName": "Project",
-      "commandLineArgs": "input.nbs output.txt"
+      "commandLineArgs": "in.nbs out.txt"
     }
   }
 }

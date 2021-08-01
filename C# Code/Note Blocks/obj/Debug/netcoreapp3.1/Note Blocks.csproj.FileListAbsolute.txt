@@ -24,3 +24,4 @@ C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.dll
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.pdb
 C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.genruntimeconfig.cache
+C:\Users\ion\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\netcoreapp3.1\Note Blocks.csprojAssemblyReference.cache
