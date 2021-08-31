@@ -8,8 +8,41 @@ namespace Note_Blocks
     {
         static void Main(string[] args)
         {
+            string input = null;
+            string output = null;
+            for (int x = 0; x != args.Length; x++)
+            {
+                string arg = args[x];
+                if (arg.StartsWith('-'))
+                {
+                    switch (arg[1..])
+                    {
+                        case "i":
+                            input = args[x + 1];
+                            x++;
+                            break;
+                        case "h":
+                            Console.WriteLine
+                            (
+                                "Usage: [args] outputfile(optional)\nArgs:" +
+                                "\n-h: Help" +
+                                "\n-i: Input file"
+                            );
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            throw new ArgumentException("Invalid parameter. Use -h for help.", arg);
+                    }
+                    continue;
+                }
+                else if (output == null) output = arg;
+                else throw new ArgumentException("More than one output supplied");
+            }
+            if (input == null) throw new ArgumentException("No input file specified.");
+
+            //I need to rewrite a lot of code to be compatible with multiple files at once oh boy
             Console.WriteLine("Toast's Note Block Studio (.nbs) decoder");
-            Song song = new Song(args[0]);
+            Song song = new Song(input);
             decimal bpm = song.Bpm;
             string title = song.Title;
             List<string> header = song.Header;
@@ -23,7 +56,7 @@ namespace Note_Blocks
 
             string[] instNames = new string[]
             {
-                "Piano",
+                "Harp",
                 "Double bass",
                 "Bass drum",
                 "Snare",
@@ -40,18 +73,13 @@ namespace Note_Blocks
                 "Banjo",
                 "Pling"
             };
-            int[] instGoTo = new int[instNames.Length];
-            instGoTo[2] = 1;
-            instGoTo[3] = 2;
-            instGoTo[4] = 3;
             byte[] instNums = new byte[instNames.Length];
             List<int> drumNotes = new List<int>();
             List<int> snareNotes = new List<int>();
             List<int> clickNotes = new List<int>();
             bool usingTempoChange = false;
-            int tempoChanger = 0;
             List<int> tempos = new List<int>();
-            if (int.TryParse(song.Description.Split("\n")[0], out tempoChanger))
+            if (int.TryParse(song.Description.Split("\n")[0], out int tempoChanger))
             {
                 usingTempoChange = true;
                 for (int x = 1; x != song.Description.Split("\n").Length; x++)
@@ -123,33 +151,17 @@ namespace Note_Blocks
                             }
                             pitch = clickNotes.IndexOf(pitch);
                         }
-
-                        if (instGoTo[instrument] != 0)
-                        {
-                            instrument = instGoTo[instrument];
-                        }
-                        else
-                        {
-                            int max = 0;
-                            foreach (int x in instGoTo)
-                            {
-                                if (max < x) max = x;
-                            }
-                            max++;
-                            instGoTo[instrument] = max;
-                            instrument = max;
-                        }
                     }
                     line += "{" + instrument + ", " + pitch + "}, ";
                 }
                 lines += "\n\ttemp[" + index + "] = {" + line + "}";
             }
-            File.WriteAllText(args[1], "function makeSong()\n\ttemp = {}\n" + lines + "\n\n\treturn temp\nend");
+            if (output != null) File.WriteAllText(output, "function makeSong()\n\ttemp = {}\n" + lines + "\n\n\treturn temp\nend");
             lines = "Instrument scales:\n";
             for (int x = 0; x != instNames.Length; x++)
             {
                 if (instNums[x] == 0) continue;
-                lines += "\n" + instNames[x] + $"({instGoTo[x]}): ";
+                lines += "\n" + instNames[x] + $"({x}): ";
                 string line = null;
                 if (instNums[x] - 4 >= 0)
                 {

@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Note Blocks/1.0.0": {
+      "NoteBlocks/1.0.0": {
         "runtime": {
-          "Note Blocks.dll": {}
+          "NoteBlocks.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Note Blocks/1.0.0": {
+    "NoteBlocks/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

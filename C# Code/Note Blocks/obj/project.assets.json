@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ion\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\Note Blocks.csproj",
-      "projectName": "Note Blocks",
-      "projectPath": "C:\\Users\\ion\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\Note Blocks.csproj",
+      "projectUniqueName": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\NoteBlocks.csproj",
+      "projectName": "NoteBlocks",
+      "projectPath": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\NoteBlocks.csproj",
       "packagesPath": "C:\\Users\\ion\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ion\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\obj\\",
+      "outputPath": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ion\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,18 +55,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.13, 3.1.13]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

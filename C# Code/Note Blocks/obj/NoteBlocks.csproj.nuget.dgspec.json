@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\Note Blocks.csproj": {}
+    "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\NoteBlocks.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\Note Blocks.csproj": {
+    "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\NoteBlocks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\Note Blocks.csproj",
-        "projectName": "Note Blocks",
-        "projectPath": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\Note Blocks.csproj",
+        "projectUniqueName": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\NoteBlocks.csproj",
+        "projectName": "NoteBlocks",
+        "projectPath": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\NoteBlocks.csproj",
         "packagesPath": "C:\\Users\\ion\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\obj\\",
         "projectStyle": "PackageReference",
