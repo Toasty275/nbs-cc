@@ -1,0 +1,42 @@
+Toast's Note Block Studio (.nbs) decoder
+File: .\Decoration Battle.nbs
+zero: 0
+nbs version: 5
+instrument count: 16
+song length: 1095
+layer count: 26
+title: 
+author: 
+song author: 
+description: 4
+1000
+950
+900
+850
+tempo: 1000
+auto save: 0
+auto save duration: 10
+time signature: 4
+minutes spent: 76
+left clicks: 634
+right clicks: 62
+note blocks added: 8
+note blocks removed: 8
+midi name: Decoration Battle.mid
+loop: 0
+max loop count: 0
+loop start tick: 0
+Instrument scales:
+
+Harp(0): low mid hi 
+Bass drum(2): mid 
+Snare(3): mid 
+Guitar(5): low mid hi 
+Xylophone(9): low mid hi 
+Bit(13): low mid hi 
+Pling(15): low mid hi 
+
+Percussion assignments:
+
+Bass Drum notes: 0=10 
+Snare Drum notes: 0=22 1=8 2=17 3=4 4=18 

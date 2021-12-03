@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace Note_Blocks
@@ -8,56 +7,40 @@ namespace Note_Blocks
     class Song
     {
         private BinaryReader reader;
-        private string title;
-        private string description;
-        private decimal bpm;
-        private List<string> header;
+        public string Title { get; }
+        public string Description { get; }
+        public decimal Bpm { get; }
+        public List<string> Header { get; }
 
-        public string Title
-        {
-            get { return title; }
-        }
-        public string Description
-        {
-            get { return description; }
-        }
-        public decimal Bpm
-        {
-            get { return bpm; }
-        }
-        public List<string> Header
-        {
-            get { return header; }
-        }
         public Song(string file)
         {
             reader = new BinaryReader(File.Open(file, FileMode.Open));
-            header = new List<string>();
-            header.Add("zero: " + reader.ReadInt16().ToString()); //zero
-            header.Add("nbs version: " + reader.ReadByte().ToString()); //nbs version
-            header.Add("instrument count: " + reader.ReadByte().ToString()); //vanilla instrument count
-            header.Add("song length: " + reader.ReadInt16().ToString()); //song length
-            header.Add("layer count: " + reader.ReadInt16().ToString()); //layer count
-            title = new string(reader.ReadChars(reader.ReadInt32()));
-            header.Add("title: " + title); //song name
-            header.Add("author: " + new string(reader.ReadChars(reader.ReadInt32()))); //author name
-            header.Add("song author: " + new string(reader.ReadChars(reader.ReadInt32()))); //original author
-            description = new string(reader.ReadChars(reader.ReadInt32()));
-            header.Add("description: " + description); //song description
-            bpm = reader.ReadInt16();
-            header.Add("tempo: " + bpm.ToString()); //tempo
-            header.Add("auto save: " + reader.ReadByte().ToString()); //auto save
-            header.Add("auto save duration: " + reader.ReadByte().ToString()); //auto save duration
-            header.Add("time signature: " + reader.ReadByte().ToString()); //time signature
-            header.Add("minutes spent: " + reader.ReadInt32().ToString()); //minutes spent
-            header.Add("left clicks: " + reader.ReadInt32().ToString()); //left clicks
-            header.Add("right clicks: " + reader.ReadInt32().ToString()); //right clicks
-            header.Add("note blocks added: " + reader.ReadInt32().ToString()); //note blocks added
-            header.Add("note blocks removed: " + reader.ReadInt32().ToString()); //note blocks removed
-            header.Add("midi name: " + new string(reader.ReadChars(reader.ReadInt32()))); //midi name
-            header.Add("loop: " + reader.ReadByte().ToString()); //loop
-            header.Add("max loop count: " + reader.ReadByte().ToString()); //max loop count
-            header.Add("loop start tick: " + reader.ReadInt16().ToString()); //loop start tick
+            Header = new List<string>();
+            Header.Add("zero: " + reader.ReadInt16().ToString()); //zero
+            Header.Add("nbs version: " + reader.ReadByte().ToString()); //nbs version
+            Header.Add("instrument count: " + reader.ReadByte().ToString()); //vanilla instrument count
+            Header.Add("song length: " + reader.ReadInt16().ToString()); //song length
+            Header.Add("layer count: " + reader.ReadInt16().ToString()); //layer count
+            Title = new string(reader.ReadChars(reader.ReadInt32()));
+            Header.Add("title: " + Title); //song name
+            Header.Add("author: " + new string(reader.ReadChars(reader.ReadInt32()))); //author name
+            Header.Add("song author: " + new string(reader.ReadChars(reader.ReadInt32()))); //original author
+            Description = new string(reader.ReadChars(reader.ReadInt32()));
+            Header.Add("description: " + Description); //song description
+            Bpm = reader.ReadInt16();
+            Header.Add("tempo: " + Bpm.ToString()); //tempo
+            Header.Add("auto save: " + reader.ReadByte().ToString()); //auto save
+            Header.Add("auto save duration: " + reader.ReadByte().ToString()); //auto save duration
+            Header.Add("time signature: " + reader.ReadByte().ToString()); //time signature
+            Header.Add("minutes spent: " + reader.ReadInt32().ToString()); //minutes spent
+            Header.Add("left clicks: " + reader.ReadInt32().ToString()); //left clicks
+            Header.Add("right clicks: " + reader.ReadInt32().ToString()); //right clicks
+            Header.Add("note blocks added: " + reader.ReadInt32().ToString()); //note blocks added
+            Header.Add("note blocks removed: " + reader.ReadInt32().ToString()); //note blocks removed
+            Header.Add("midi name: " + new string(reader.ReadChars(reader.ReadInt32()))); //midi name
+            Header.Add("loop: " + reader.ReadByte().ToString()); //loop
+            Header.Add("max loop count: " + reader.ReadByte().ToString()); //max loop count
+            Header.Add("loop start tick: " + reader.ReadInt16().ToString()); //loop start tick
         }
         public Beat NextBeat()
         {

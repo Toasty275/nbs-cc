@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cxAB5xeDzFUM7rybvy4ussDxZZoeK35JbnMX/4ipBvwhct8VuELzhlueBktZx+YxI3iax8z1cclVNGuo7gOojw==",
+  "dgSpecHash": "aP5nB3EpuuuM6O4q6x32QnnlAEvUPS1ieCyaClFE6KIEcPFCcU7UvzdYDIeIPHJZIAsu9tMTqfmr75Cjzo4LPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ion\\OneDrive\\Documents\\GitHub\\nbs-cc\\C# Code\\Note Blocks\\NoteBlocks.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ion\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
   "logs": []
 }

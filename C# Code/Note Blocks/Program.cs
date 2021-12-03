@@ -10,6 +10,8 @@ namespace Note_Blocks
         {
             string input = null;
             string output = null;
+            bool showHeader = false;
+            bool logOutput = true;
             for (int x = 0; x != args.Length; x++)
             {
                 string arg = args[x];
@@ -22,13 +24,22 @@ namespace Note_Blocks
                             x++;
                             break;
                         case "h":
-                            Console.WriteLine
-                            (
-                                "Usage: [args] outputfile(optional)\nArgs:" +
-                                "\n-h: Help" +
-                                "\n-i: Input file"
-                            );
+                            string[] helpLines =
+                            {
+                                "Usage: [args] outputFile(optional)",
+                                "-h: Help",
+                                "-i: Input file",
+                                "-H: Show nbs header",
+                                "-s: Don't output to log (silent)"
+                            };
+                            foreach (string l in helpLines) Console.WriteLine(l);
                             Environment.Exit(0);
+                            break;
+                        case "H":
+                            showHeader = true;
+                            break;
+                        case "s":
+                            logOutput = false;
                             break;
                         default:
                             throw new ArgumentException("Invalid parameter. Use -h for help.", arg);
@@ -40,13 +51,17 @@ namespace Note_Blocks
             }
             if (input == null) throw new ArgumentException("No input file specified.");
 
-            //I need to rewrite a lot of code to be compatible with multiple files at once oh boy
-            Console.WriteLine("Toast's Note Block Studio (.nbs) decoder");
+            Console.WriteLine("Toast's Note Block Studio (.nbs) decoder\n");
+            List<string> Log = new List<string> { "Toast's Note Block Studio (.nbs) decoder" };
+
             Song song = new Song(input);
+            Console.WriteLine("File: " + input);
+            Log.Add("File: " + input);
             decimal bpm = song.Bpm;
             string title = song.Title;
             List<string> header = song.Header;
-            foreach (string x in header) Console.WriteLine(x);
+            if (showHeader) foreach (string x in header) Console.WriteLine(x);
+            Log.AddRange(header);
             Console.WriteLine();
             //part 2
             int index = 0;
@@ -99,10 +114,28 @@ namespace Note_Blocks
                 }
                 string line = null;
 
+                List<int> played = new List<int>();
                 for (int i = 0; i != beat.Instruments.Count; i++) //main thingey
                 {
                     int instrument = beat.Instruments[i];
                     int pitch = beat.Pitches[i];
+                    int combined = instrument * 10000 + pitch;
+                    if (played.Contains(combined))
+                    {
+                        Console.WriteLine($"[{input}] Duplicate note on tick {index - 1}. Inst {instrument}, Pitch {pitch}");
+                        Log.Add($"[{input}] Duplicate note on tick {index - 1}. Inst {instrument}, Pitch {pitch}");
+                        continue;
+                    }
+                    else
+                    {
+                        played.Add(combined);
+                    }
+                    if (pitch < -24 || pitch > 48)
+                    {
+                        Console.WriteLine($"[{input}] Note out of range on tick {index - 1}. Inst {instrument}, Pitch {pitch}");
+                        Log.Add($"[{input}] Note out of range on tick {index - 1}. Inst {instrument}, Pitch {pitch}");
+                        continue;
+                    }
                     if (usingTempoChange && instrument == tempoChanger)
                     {
                         instrument = -1;
@@ -196,8 +229,9 @@ namespace Note_Blocks
                 for (int x = 0; x != clickNotes.Count; x++) lines += $"{x}={clickNotes[x]} ";
             }
             Console.WriteLine(lines);
+            Log.Add(lines);
+            if (logOutput) File.WriteAllLines("log.txt", Log);
             song.Dispose();
-            //Console.ReadKey();
         }
     }
 }
