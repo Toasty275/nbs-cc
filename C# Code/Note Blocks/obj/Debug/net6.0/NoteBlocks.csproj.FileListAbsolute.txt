@@ -1,0 +1,15 @@
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\net6.0\NoteBlocks.exe
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\net6.0\NoteBlocks.deps.json
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\net6.0\NoteBlocks.runtimeconfig.json
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\net6.0\NoteBlocks.dll
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\net6.0\ref\NoteBlocks.dll
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\bin\Debug\net6.0\NoteBlocks.pdb
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.csproj.AssemblyReference.cache
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.AssemblyInfoInputs.cache
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.AssemblyInfo.cs
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.csproj.CoreCompileInputs.cache
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.dll
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\ref\NoteBlocks.dll
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.pdb
+C:\Users\ion\OneDrive\Documents\GitHub\nbs-cc\C# Code\Note Blocks\obj\Debug\net6.0\NoteBlocks.genruntimeconfig.cache
