@@ -1,3 +1,4 @@
+dofile('./song.lua')
 --Manual input variables:
 --position of all the notes used ({x1, z1}, {x2, z2}, ... {xn, zn})
 local origins = {}
@@ -77,7 +78,7 @@ monitors[13] = 0 --bit
 monitors[14] = 0 --banjo
 monitors[15] = 49 --pling
 
-dofile('./song.lua')
+
 local tick = 0
 local reset = 0
 local played = {}
@@ -123,12 +124,11 @@ end
 function offset(pitch, t)
 	z = 5
 	p = pitch
-	if t == 2 then z = 7 end
-	if t == -2 then
+	if t == 2 then z = 7
+	elseif t == -2 then
 		z = 7
 		p = p + 24
-	end
-	if t == 3 then
+	elseif t == 3 then
 		z = 9
 		p = p + 24
 	end

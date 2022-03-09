@@ -27,19 +27,24 @@ namespace Note_Blocks
             TempoChanger,
             SongTick
         }
-        public struct Note
+        public readonly struct Note
         {
-            public int pitch;
-            public Name instrument;
+            public int Pitch { get; }
+            public Name Instrument { get; }
+            public Note(int Pitch, Name Instrument)
+            {
+                this.Pitch = Pitch;
+                this.Instrument = Instrument;
+            }
             public override int GetHashCode()
             {
-                return (sbyte)pitch << 8 + (byte)instrument;
+                return (sbyte)Pitch << 8 + (byte)Instrument;
             }
             public override bool Equals(object obj)
             {
                 if (obj is not Note) return base.Equals(obj);
                 Note n = (Note)obj;
-                return pitch == n.pitch && instrument == n.instrument;
+                return Pitch == n.Pitch && Instrument == n.Instrument;
             }
 
             public static bool operator ==(Note left, Note right)
@@ -52,24 +57,39 @@ namespace Note_Blocks
                 return !(left == right);
             }
         }
-        public struct Beat
+        public readonly struct Beat
         {
-            public int Jumps;
+            public int Jumps { get; }
+            public List<Note> RawNotes { get; }
+            public Beat(int Jumps, List<Note> RawNotes)
+            {
+                this.Jumps = Jumps;
+                this.RawNotes = RawNotes;
+            }
+            public Beat()
+            {
+                Jumps = 0;
+                RawNotes = new();
+            }
+            public Beat(int Jumps)
+            {
+                this.Jumps = Jumps;
+                RawNotes = new();
+            }
+
             public static Beat Empty
             {
                 get
                 {
-                    Beat beat = new();
-                    beat.rawNotes = new();
+                    Beat beat = new(0, new());
                     return beat;
                 }
             }
-            public List<Note> rawNotes;
             public List<Note> Notes
             {
                 get
                 {
-                    List<Note> temp = rawNotes;
+                    List<Note> temp = RawNotes;
                     foreach (Note note in Duplicates)
                     {
                         temp.Remove(note);
@@ -87,7 +107,7 @@ namespace Note_Blocks
                 {
                     List<Note> seen = new();
                     List<Note> duplicates = new();
-                    foreach (Note x in rawNotes)
+                    foreach (Note x in RawNotes)
                     {
                         if (seen.Contains(x))
                         {
@@ -103,9 +123,9 @@ namespace Note_Blocks
                 get
                 {
                     List<Note> temp = new();
-                    foreach (Note x in rawNotes)
+                    foreach (Note x in RawNotes)
                     {
-                        if (x.pitch < -24 || x.pitch > 48) temp.Add(x);
+                        if (x.Pitch < -24 || x.Pitch > 48) temp.Add(x);
                     }
                     return temp;
                 }
@@ -113,7 +133,7 @@ namespace Note_Blocks
         }
 
         private readonly BinaryReader reader;
-        public List<Beat> Song { get;private set; }
+        public List<Beat> Song { get; private set; }
         public List<string> Header { get; private set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
@@ -157,8 +177,7 @@ namespace Note_Blocks
             {
                 short jumps = reader.ReadInt16();
                 if (jumps == 0) break;
-                Beat beat = Beat.Empty;
-                beat.Jumps = jumps;
+                Beat beat = new(jumps, new());
                 while (true)
                 {
                     short nextLayer = reader.ReadInt16();
@@ -168,10 +187,8 @@ namespace Note_Blocks
                     reader.ReadByte(); //velocity
                     reader.ReadByte(); //panning
                     reader.ReadInt16(); //pitch offset (cents)
-                    Note note = new();
-                    note.pitch = pitch;
-                    note.instrument = name;
-                    beat.rawNotes.Add(note);
+                    Note note = new(pitch, name);
+                    beat.RawNotes.Add(note);
                 }
 
                 Song.Add(beat);

@@ -1,62 +1,99 @@
+
 Toast's Note Block Studio (.nbs) decoder
-File: .\oh boy.nbs
-zero: 0
-nbs version: 5
-instrument count: 16
-song length: 1535
-layer count: 61
-title: 
-author: 
-song author: 
-description: 
-tempo: 2000
-auto save: 0
-auto save duration: 10
-time signature: 4
-minutes spent: 31
-left clicks: 640
-right clicks: 125
-note blocks added: 9
-note blocks removed: 44
-midi name: th06_11.mid
-loop: 0
-max loop count: 0
-loop start tick: 0
-[.\oh boy.nbs] Duplicate note on tick 60. Inst BassDrum, Pitch 6
-[.\oh boy.nbs] Duplicate note on tick 124. Inst BassDrum, Pitch 6
-[.\oh boy.nbs] Duplicate note on tick 316. Inst BassDrum, Pitch 6
-[.\oh boy.nbs] Duplicate note on tick 736. Inst BassDrum, Pitch 6
-[.\oh boy.nbs] Duplicate note on tick 762. Inst BassDrum, Pitch 6
-[.\oh boy.nbs] Duplicate note on tick 764. Inst BassDrum, Pitch 6
-[.\oh boy.nbs] Duplicate note on tick 832. Inst Guitar, Pitch 22
-[.\oh boy.nbs] Duplicate note on tick 960. Inst Guitar, Pitch 26
-[.\oh boy.nbs] Duplicate note on tick 992. Inst Guitar, Pitch 28
-[.\oh boy.nbs] Duplicate note on tick 1088. Inst Guitar, Pitch 22
-[.\oh boy.nbs] Duplicate note on tick 1110. Inst Guitar, Pitch 29
-[.\oh boy.nbs] Duplicate note on tick 1114. Inst Guitar, Pitch 29
-[.\oh boy.nbs] Duplicate note on tick 1216. Inst Guitar, Pitch 22
-[.\oh boy.nbs] Duplicate note on tick 1238. Inst Guitar, Pitch 29
-[.\oh boy.nbs] Duplicate note on tick 1242. Inst Guitar, Pitch 29
-[.\oh boy.nbs] Duplicate note on tick 1344. Inst Guitar, Pitch 19
-[.\oh boy.nbs] Duplicate note on tick 1366. Inst Guitar, Pitch 26
-[.\oh boy.nbs] Duplicate note on tick 1370. Inst Guitar, Pitch 26
-[.\oh boy.nbs] Duplicate note on tick 1472. Inst Guitar, Pitch 19
-[.\oh boy.nbs] Duplicate note on tick 1494. Inst Guitar, Pitch 26
-[.\oh boy.nbs] Duplicate note on tick 1498. Inst Guitar, Pitch 26
-[.\oh boy.nbs] Duplicate note on tick 1504. Inst BassDrum, Pitch 6
-[.\oh boy.nbs] Duplicate note on tick 1532. Inst BassDrum, Pitch 6
+
+[Info] File: .\wen was her.nbs
+[Warning] [.\wen was her.nbs] Duplicate note on tick 48. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 58. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 69. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 128. Inst Harp, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 160. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 208. Inst Harp, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 208. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 218. Inst Harp, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 218. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 229. Inst Harp, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 229. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 240. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 244. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 248. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 252. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 256. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 260. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 264. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 268. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 272. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 276. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 280. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 284. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 288. Inst Harp, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 288. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 288. Inst Harp, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 298. Inst Harp, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 298. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 298. Inst Harp, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 309. Inst Harp, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 309. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 309. Inst Harp, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 368. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 368. Inst Pling, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 368. Inst Pling, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 378. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 378. Inst Pling, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 378. Inst Pling, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 389. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 389. Inst Pling, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 389. Inst Pling, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 448. Inst Harp, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 448. Inst Pling, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 448. Inst Pling, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 458. Inst Pling, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 458. Inst Pling, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 469. Inst Pling, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 469. Inst Pling, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 480. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 528. Inst Harp, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 528. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 538. Inst Harp, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 538. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 549. Inst Harp, Pitch 13
+[Warning] [.\wen was her.nbs] Duplicate note on tick 549. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 560. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 564. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 568. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 572. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 576. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 580. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 584. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 588. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 592. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 596. Inst Harp, Pitch 23
+[Warning] [.\wen was her.nbs] Duplicate note on tick 600. Inst Harp, Pitch 20
+[Warning] [.\wen was her.nbs] Duplicate note on tick 604. Inst Harp, Pitch 15
+[Warning] [.\wen was her.nbs] Duplicate note on tick 608. Inst Harp, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 608. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 608. Inst Harp, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 618. Inst Harp, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 618. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 618. Inst Harp, Pitch 25
+[Warning] [.\wen was her.nbs] Duplicate note on tick 629. Inst BassDrum, Pitch 6
+[Warning] [.\wen was her.nbs] Duplicate note on tick 629. Inst Harp, Pitch 16
+[Warning] [.\wen was her.nbs] Duplicate note on tick 629. Inst Harp, Pitch 22
+[Warning] [.\wen was her.nbs] Duplicate note on tick 629. Inst Harp, Pitch 25
+[Info] 3 2 1 1 1 0 3 0 0 0 3 0 2 0 0 3 
 Instrument scales:
 
+Harp(0): low mid hi 
 DoubleBass(1): mid hi 
 BassDrum(2): mid 
 Snare(3): mid 
-Guitar(5): low mid hi 
-Flute(6): low mid 
-Xylophone(9): low mid 
+Click(4): mid 
+Flute(6): low mid hi 
 IronXylophone(10): low mid hi 
+Didgeridoo(12): mid hi 
 Pling(15): low mid hi 
 
 Percussion assignments:
 
 Bass Drum notes: 0=6 1=23 2=15 
-Snare Drum notes: 0=17 1=22 2=18 3=24 4=8 5=4 
+Snare Drum notes: 0=17 1=22 2=4 3=18 4=8 5=24 
+Click notes: 0=6 

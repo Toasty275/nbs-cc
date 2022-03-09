@@ -59,17 +59,17 @@ namespace Note_Blocks
             if (input == null) throw new ArgumentException("No input file specified.");
             #endregion
 
-            Console.WriteLine("Toast's Note Block Studio (.nbs) decoder\n");
-            List<string> Log = new() { "Toast's Note Block Studio (.nbs) decoder" };
+            Logger logger = new("Log.txt");
+            if (!logOutput) logger.FileLevel = Logger.LogLevel.None;
+            if (showHeader) logger.ConsoleLevel = Logger.LogLevel.Debug;
+            logger.Log("Toast's Note Block Studio (.nbs) decoder\n", Logger.LogImportance.Generic);
 
             Nbs song = new(input);
-            Console.WriteLine("File: " + input);
-            Log.Add("File: " + input);
+            logger.Log("File: " + input, Logger.LogImportance.Information);
             decimal bpm = song.Bpm;
             string title = song.Title;
             List<string> header = song.Header;
-            if (showHeader) foreach (string x in header) Console.WriteLine(x);
-            Log.AddRange(header);
+            foreach (string x in header) logger.Log(x, Logger.LogImportance.Debug);
             Console.WriteLine();
             //part 2
             int index = 0;
@@ -107,19 +107,17 @@ namespace Note_Blocks
                 //warn about invalid notes
                 foreach (Nbs.Note note in beat.Duplicates)
                 {
-                    Console.WriteLine($"[{input}] Duplicate note on tick {index - 1}. Inst {note.instrument}, Pitch {note.pitch}");
-                    Log.Add($"[{input}] Duplicate note on tick {index - 1}. Inst {note.instrument}, Pitch {note.pitch}");
+                    logger.Log($"[{input}] Duplicate note on tick {index - 1}. Inst {note.Instrument}, Pitch {note.Pitch}", Logger.LogImportance.Warning);
                 }
                 foreach (Nbs.Note note in beat.OutOfRange)
                 {
-                    Console.WriteLine($"[{input}] Note out of range on tick {index - 1}. Inst {note.instrument}, Pitch {note.pitch}");
-                    Log.Add($"[{input}] Note out of range on tick {index - 1}. Inst {note.instrument}, Pitch {note.pitch}");
+                    logger.Log($"[{input}] Note out of range on tick {index - 1}. Inst {note.Instrument}, Pitch {note.Pitch}", Logger.LogImportance.Warning);
                 }
 
                 for (int i = 0; i != beat.Notes.Count; i++) //main thingey
                 {
-                    Nbs.Name instrument = beat.Notes[i].instrument;
-                    int pitch = beat.Notes[i].pitch;
+                    Nbs.Name instrument = beat.Notes[i].Instrument;
+                    int pitch = beat.Notes[i].Pitch;
                     
                     if (usingTempoChange && instrument == tempoChanger)
                     {
@@ -177,6 +175,7 @@ namespace Note_Blocks
             }
             if (output != null) File.WriteAllText(output, "function makeSong()\n\ttemp = {}\n" + lines + "\n\n\treturn temp\nend");
             lines = "Instrument scales:\n";
+            int[] types = new int[16];
             for (int x = 0; x != 16; x++)
             {
                 if (instNums[x] == 0) continue;
@@ -186,18 +185,27 @@ namespace Note_Blocks
                 {
                     line = "hi " + line;
                     instNums[x] -= 4;
+                    types[x] = 1;
                 }
                 if (instNums[x] - 2 >= 0)
                 {
                     line = "mid " + line;
                     instNums[x] -= 2;
+                    if (types[x] == 0) types[x] = 1;
+                    else types[x] = 2;
                 }
                 if (instNums[x] - 1 >= 0)
                 {
                     line = "low " + line;
+                    if (types[x] == 0) types[x] = 1;
+                    else if (types[x] == 1) types[x] = -2;
+                    else types[x] = 3;
                 }
                 lines += line;
             }
+            string moamspdn = null;
+            foreach (int x in types) moamspdn += $"{x} ";
+            logger.Log(moamspdn, Logger.LogImportance.Information);
             lines += "\n\nPercussion assignments:\n";
             if (drumNotes.Count > 0)
             {
@@ -214,9 +222,7 @@ namespace Note_Blocks
                 lines += "\nClick notes: ";
                 for (int x = 0; x != clickNotes.Count; x++) lines += $"{x}={clickNotes[x]} ";
             }
-            Console.WriteLine(lines);
-            Log.Add(lines);
-            if (logOutput) File.WriteAllLines("log.txt", Log);
+            logger.Log(lines, Logger.LogImportance.Generic);
         }
     }
 }
